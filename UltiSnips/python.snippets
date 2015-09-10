@@ -11,6 +11,35 @@ $0
 endsnippet
 
 snippet defm
+def ${1:function_name}( self$2 ):
+	${3:pass}
+${0}
+endsnippet
+
+snippet defmc
 def ${1:faction_name}( self$2 ):
-	${0:pass}
+	"""$1
+
+	Args: `!p args_list = t[2].split( "," )
+result = ""
+for i, args in enumerate( args_list ):
+	args = args.strip( " " )
+
+	if i == 0:
+		if len( args_list ) == 1 and args == "":
+			result = "None\n"
+		else:
+			result = snip.mkline( "\n" )
+			snip.shift( 2 )
+	else:
+		result = result + snip.mkline( ("%s: #TODO\n") % args, snip.indent )
+
+snip.rv = result`
+	Returns:
+
+	Raises:
+	"""
+
+	${3:pass}
+${0}
 endsnippet
