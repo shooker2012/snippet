@@ -22,6 +22,30 @@ for $1, $2, in paris($3) do
 end
 endsnippet
 
+snippet log
+print( "$1" )$0
+endsnippet
+
+snippet "logv (.*)" br
+print( "========log $1:", `!p
+
+text = match.group(1)
+values = text.split(',')
+
+params = ''
+for i,v in enumerate(values):
+	v = v.strip()
+	params += '"{0}: "..tostring({0})'.format( v )
+	if i != len(values)-1:
+		params += ", "
+snip.rv = params
+` )$0
+endsnippet
+
+snippet curtime
+`!v strftime("%Y %m %d") `
+endsnippet
+
 snippet if
 if $1 then
 	${0:${VISUAL:--body }}
